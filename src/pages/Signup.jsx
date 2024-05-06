@@ -1,7 +1,7 @@
 import axios from 'axios';
 import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom';
-const BASE_URL="http://localhost:4000/api/v1";
+const BASE_URL="https://fliprassignment.onrender.com/api/v1";
 const Signup = () => {
     const navigate = useNavigate()
     const [formData,setFormData]=useState({
