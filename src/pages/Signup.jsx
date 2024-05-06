@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom';
+import toast from 'react-hot-toast';
 const BASE_URL="https://fliprassignment.onrender.com/api/v1";
 const Signup = () => {
     const navigate = useNavigate()
@@ -31,8 +32,10 @@ const Signup = () => {
         try {
             const response=await axios.post(`${BASE_URL}/signup`,signupData);
             console.log(response);
+            toast.success("SignUp successfully");
             navigate('/login');
         } catch (error) {
+          toast.error("Error in Signup");
             console.log(error)
         }
         // setFormData({

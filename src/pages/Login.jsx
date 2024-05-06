@@ -1,7 +1,8 @@
 import axios from 'axios';
 import React, { useState } from 'react'
+import { useToaster } from 'react-hot-toast';
 import { Link, useNavigate } from 'react-router-dom';
-import { toast } from 'react-toastify';
+import { toast } from 'react-hot-toast';
 const BASE_URL="https://fliprassignment.onrender.com/api/v1"
 const Login = () => {
   const navigate=useNavigate();
@@ -26,11 +27,13 @@ const Login = () => {
         const response=await axios.post(`${BASE_URL}/login`,loginData);
         console.log(response.data.token);
         localStorage.setItem("token", JSON.stringify(response.data.token))
+        toast.success("Logged In successfully");
         navigate('/');
 
       } catch (error) {
+        toast.success("Error In Login");
         console.log("error in login ",error)
-        toast.error("Error in login");
+       
       }
     }
   return (
